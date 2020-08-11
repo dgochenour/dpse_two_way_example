@@ -1,0 +1,7 @@
+
+const string my_topic_name = "my_topic";
+
+struct my_type {
+    long id; //@key
+    string<128> msg;
+};
