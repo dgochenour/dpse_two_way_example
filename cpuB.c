@@ -247,8 +247,6 @@ int main(void)
     dp_qos.resource_limits.remote_participant_allocation = 1;
     dp_qos.resource_limits.remote_reader_allocation = 8;
     dp_qos.resource_limits.remote_writer_allocation = 8;
-    dp_qos.resource_limits.matching_reader_writer_pair_allocation = 4;
-    dp_qos.resource_limits.matching_writer_reader_pair_allocation = 4;
 
     // set the name of the local DomainParticipant (i.e. - this application) 
     // from the constants defined in discovery_constants.h
@@ -315,6 +313,7 @@ int main(void)
     // and other constants in discovery_constants.h
     dw_qos.protocol.rtps_object_id = k_OBJ_ID_PARTICIANT02_DW01;
     dw_qos.reliability.kind = DDS_RELIABLE_RELIABILITY_QOS;
+    dw_qos.writer_resource_limits.max_remote_readers = 2;
     dw_qos.resource_limits.max_samples_per_instance = 1;
     dw_qos.resource_limits.max_instances = 2;
     dw_qos.resource_limits.max_samples = dw_qos.resource_limits.max_instances *
@@ -396,8 +395,8 @@ int main(void)
     dr_qos.resource_limits.max_samples_per_instance = 16;
     dr_qos.resource_limits.max_samples = dr_qos.resource_limits.max_instances *
             dr_qos.resource_limits.max_samples_per_instance;
-    dr_qos.reader_resource_limits.max_remote_writers = 1;
-    dr_qos.reader_resource_limits.max_remote_writers_per_instance = 1;
+    dr_qos.reader_resource_limits.max_remote_writers = 2;
+    dr_qos.reader_resource_limits.max_remote_writers_per_instance = 2;
     dr_qos.history.depth = 16;
 
     // create the DataReader
